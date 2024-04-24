@@ -1,5 +1,0 @@
-MSSV 17130180
-Tên Nguyễn Ngọc Quang
-
-path:localhost/home
-path:........./song/song?id
