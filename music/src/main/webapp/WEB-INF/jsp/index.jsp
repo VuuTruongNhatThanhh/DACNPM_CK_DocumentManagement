@@ -1,5 +1,7 @@
+<%@ page import="com.boot.music.entity.Document" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="header.jsp" %>
@@ -7,22 +9,22 @@
         <div class="row">
           <div class="col-sm-6">
 <%--            <h3>Column 1</h3>--%>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
+    <% List<Document> documents = (List<Document>) request.getAttribute("documents");
+        for (Document document : documents) { %>
+    <%if(document.getStatus()==3){%>
+    <p><a href="<%= request.getContextPath() + "/documents/" + document.getId() %>"><%= document.getTitle() %></a></p>
+
+              <%}}%>
           </div>
-          <div class="col-sm-6">
-<%--            <h3>Column 2</h3>--%>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-            <p>Nội dung...</p>
-          </div>
+<%--          <div class="col-sm-6">--%>
+<%--&lt;%&ndash;            <h3>Column 2</h3>&ndash;%&gt;--%>
+<%--            <p>Nội dung...</p>--%>
+<%--            <p>Nội dung...</p>--%>
+<%--            <p>Nội dung...</p>--%>
+<%--            <p>Nội dung...</p>--%>
+<%--            <p>Nội dung...</p>--%>
+<%--            <p>Nội dung...</p>--%>
+<%--          </div>--%>
         </div>
       </div>
       <div class="footer">
@@ -62,6 +64,7 @@
           </tbody>
         </table>
       </div>
+
     </div>
   </body>
 </html>

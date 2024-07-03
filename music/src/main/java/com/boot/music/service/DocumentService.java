@@ -98,6 +98,8 @@ public class DocumentService {
                 new RuntimeException("Không tìm thấy tài liệu với ID: " + id));
     }
 
+
+
     public Document addDocument(Document document) {
         // Có thể thực hiện các xác thực hoặc kiểm tra dữ liệu ở đây
 

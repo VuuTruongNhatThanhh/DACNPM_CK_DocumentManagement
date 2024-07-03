@@ -40,6 +40,13 @@ public class DocumentController {
         return "documentsLoading";
     }
 
+    @GetMapping("/homeDocument")
+    public String getAllDocumentsHome(Model model) {
+        List<Document> documents = documentService.getAllDocuments();
+        model.addAttribute("documents", documents);
+        return "index";
+    }
+
     @Autowired
     private DocumentRepo documentRepo;
 
@@ -105,6 +112,13 @@ public class DocumentController {
         }
     }
 
+    @GetMapping("/documents/{id}")
+    public String viewDocumentDetail(@PathVariable("id") int id, Model model) {
+        Document document = documentService.getDocumentById(id);
+        model.addAttribute("document", document);
+        return "documentDetail";
+    }
+
     @PostMapping("/addDocument")
     public String addDocument(@RequestParam("title") String title,
                               @RequestParam("summary") String summary,
@@ -121,6 +135,8 @@ public class DocumentController {
 
         return "redirect:/documents"; // Điều hướng đến trang thành công sau khi thêm tài liệu
     }
+
+
 }
 
 

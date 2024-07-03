@@ -20,7 +20,7 @@
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="#" class="h1">
+          <a href="/homeDocument" class="h1">
             <b>Chinhphu.vn</b> </a>
         </div>
         <div class="card-body">
