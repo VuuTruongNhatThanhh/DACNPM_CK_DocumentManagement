@@ -227,22 +227,28 @@
                 </ul>
               </li>
               <li class="nav-item ">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p> Document Management <i class="right fas fa-angle-left"></i>
+                  <p> Quản lý tài liệu <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="../document-managent/create-document.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Create Document</p>
+                      <p>Tạo tài liệu</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/documents" class="nav-link active">
+                    <a href="/documents" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Document List</p>
+                      <p>Danh sách tài liệu</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/documentsLoading" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tài liệu đang chờ</p>
                     </a>
                   </li>
                 </ul>

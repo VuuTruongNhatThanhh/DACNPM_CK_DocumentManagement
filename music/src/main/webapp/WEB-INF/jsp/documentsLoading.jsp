@@ -13,14 +13,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Danh sách tài liệu</h1>
+                    <h1>Tài liệu đang chờ</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
                             <a href="#">Trang chủ</a>
                         </li>
-                        <li class="breadcrumb-item active">Danh sách tài liệu</li>
+                        <li class="breadcrumb-item active">Tài liệu đang chờ</li>
                     </ol>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                             <tbody>
                             <% List<Document> documents = (List<Document>) request.getAttribute("documents");
                                 for (Document document : documents) { %>
-                            <%if(document.getStatus()==3 || document.getStatus()==2){%>
+                            <%if(document.getStatus()!=3 && document.getStatus()!=2){%>
                             <tr>
                                 <td><%= document.getId() %>
                                 </td>
@@ -93,13 +93,13 @@
 
                                         </div>
                                         <%   }%>
-<%--                                        <div class="btn-group mr-2" role="group">--%>
-<%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 4) { %>--%>
-<%--                                            <button type="button" class="btn btn-warning" data-toggle="modal"--%>
-<%--                                                    data-target="#documentEditModal${document.id}">Phản hồi--%>
-<%--                                            </button>--%>
-<%--                                            <% } %>--%>
-<%--                                        </div>--%>
+                                        <%--                                        <div class="btn-group mr-2" role="group">--%>
+                                        <%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 4) { %>--%>
+                                        <%--                                            <button type="button" class="btn btn-warning" data-toggle="modal"--%>
+                                        <%--                                                    data-target="#documentEditModal${document.id}">Phản hồi--%>
+                                        <%--                                            </button>--%>
+                                        <%--                                            <% } %>--%>
+                                        <%--                                        </div>--%>
                                         <%if(role==1){%>
                                         <div class="btn-group mr-2" role="group">
                                             <% if (document.getStatus() == 3) { %>

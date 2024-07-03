@@ -33,8 +33,19 @@ public class DocumentController {
         return "documents";
     }
 
+    @GetMapping("/documentsLoading")
+    public String getAllDocumentsLoading(Model model) {
+        List<Document> documents = documentService.getAllDocuments();
+        model.addAttribute("documents", documents);
+        return "documentsLoading";
+    }
+
     @Autowired
     private DocumentRepo documentRepo;
+
+
+//    1: cho duyet, 3: da duyet, 2: an,
+
 
     @GetMapping("/approve/{id}")
     public String approveDocument(@PathVariable int id) {
@@ -63,7 +74,7 @@ public class DocumentController {
         // Thêm thông báo hoặc dữ liệu cần thiết vào redirectAttributes nếu cần
         redirectAttributes.addFlashAttribute("message", "Cập nhật trạng thái tài liệu thành công!");
         // Chuyển hướng người dùng đến trang /documents
-        return "redirect:/documents";
+        return "redirect:/documentsLoading";
     }
 
 //    @PostMapping("/createDoc")

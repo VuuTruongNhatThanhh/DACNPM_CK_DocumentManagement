@@ -6,7 +6,7 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Column 1</h3>
+<%--            <h3>Column 1</h3>--%>
             <p>Nội dung...</p>
             <p>Nội dung...</p>
             <p>Nội dung...</p>
@@ -15,7 +15,7 @@
             <p>Nội dung...</p>
           </div>
           <div class="col-sm-6">
-            <h3>Column 2</h3>
+<%--            <h3>Column 2</h3>--%>
             <p>Nội dung...</p>
             <p>Nội dung...</p>
             <p>Nội dung...</p>
@@ -46,8 +46,8 @@
                       <p>Điện thoại: Văn phòng: 080 43162; Fax: 080.48924</p>
                     </div>
                     <div class="col-sm-6">
-                      <p>Nội dung...</p>
-                      <p>Nội dung...</p>
+<%--                      <p>Nội dung...</p>--%>
+<%--                      <p>Nội dung...</p>--%>
                     </div>
                   </div>
                   <hr>
