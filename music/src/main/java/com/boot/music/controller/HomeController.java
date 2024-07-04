@@ -1,9 +1,13 @@
 package com.boot.music.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.boot.music.entity.Document;
+import com.boot.music.entity.Version;
+import com.boot.music.entity.VersionDocument;
 import com.boot.music.repositories.DocumentRepo;
+import com.boot.music.repositories.VersionDocumentRepo;
 import com.boot.music.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +28,8 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/")
 public class HomeController {
 	private final DocumentService documentService;
-
+	@Autowired
+	private VersionDocumentRepo versionRepository;
 	public HomeController(DocumentService documentService) {
 		this.documentService = documentService;
 	}
@@ -95,6 +100,26 @@ private DocumentRepo documentRepo;
 		try {
 			// Cập nhật tiêu đề và tóm tắt của tài liệu
 			documentService.updateDocument(id, title, summary);
+			// Get the latest version for the document
+			VersionDocument latestVersion = versionRepository.findTopByDocumentIdOrderByIdDesc(id);
+			int newVersionNumber = 1;
+
+			if (latestVersion != null) {
+				String latestVersionName = latestVersion.getVersionName();
+				newVersionNumber = Integer.parseInt(latestVersionName.split(" ")[1]) + 1;
+			}
+
+			String newVersionName = "Version " + newVersionNumber;
+
+			// Create and save a new version entry
+			VersionDocument version = new VersionDocument();
+			version.setDocumentId(id);
+			version.setTitle(title);
+			version.setSummary(summary);
+			version.setUpdatedAt(LocalDateTime.now());
+			version.setVersionName(newVersionName);
+
+			versionRepository.save(version);
 			return "Cập nhật tiêu đề và tóm tắt thành công!";
 		} catch (Exception e) {
 			return "Đã xảy ra lỗi khi cập nhật tiêu đề và tóm tắt: " + e.getMessage();

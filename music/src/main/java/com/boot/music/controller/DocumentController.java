@@ -2,8 +2,11 @@ package com.boot.music.controller;
 
 import com.boot.music.entity.Document;
 import com.boot.music.entity.User;
+import com.boot.music.entity.VersionDocument;
 import com.boot.music.repositories.DocumentRepo;
 import com.boot.music.repositories.UserRepo;
+import com.boot.music.repositories.VersionDocumentRepo;
+import com.boot.music.repositories.VersionRepo;
 import com.boot.music.request.DocumentRequest;
 import com.boot.music.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,8 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
     private UserRepo userRepo;
-
+    @Autowired
+    private VersionDocumentRepo versionRepository;
 
     @GetMapping("/documents")
     public String getAllDocuments(Model model) {
@@ -134,6 +138,14 @@ public class DocumentController {
         documentRepo.save(document);
 
         return "redirect:/documents"; // Điều hướng đến trang thành công sau khi thêm tài liệu
+    }
+
+    @GetMapping("/viewVersions")
+    public String viewVersions(@RequestParam("documentId") int documentId, Model model) {
+        List<VersionDocument> versions = versionRepository.findByDocumentId(documentId);
+        System.out.println("version"+ versions);
+        model.addAttribute("versions", versions);
+        return "viewVersions";
     }
 
 

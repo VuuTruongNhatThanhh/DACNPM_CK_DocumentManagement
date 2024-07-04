@@ -1,5 +1,6 @@
 <%@ page import="com.boot.music.entity.Document" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.boot.music.entity.VersionDocument" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên tài liệu</th>
-                                <th>Phiên bản</th>
+
                                 <th>Trạng Thái</th>
                                 <th>Tác vụ</th>
                             </tr>
@@ -52,7 +53,7 @@
                                 </td>
                                 <td><%= document.getTitle() %>
                                 </td>
-                                <td>${document.version}</td>
+
                                 <td><%
                                     String status = "";
                                     switch (document.getStatus()) {
@@ -110,6 +111,17 @@
                                             </form>
                                             <% } %>
 
+                                        </div>
+                                        <% } %>
+
+                                        <% if(role == 1) { %>
+                                        <div class="btn-group mr-2" role="group">
+                                            <% if (document.getStatus() == 3) { %>
+                                            <form action="/viewVersions" method="get">
+                                                <input type="hidden" name="documentId" value="<%= document.getId() %>">
+                                                <button style="background-color: green; color: white; border-color: green" type="submit" class="btn btn-danger">Xem phiên bản</button>
+                                            </form>
+                                            <% } %>
                                         </div>
                                         <% } %>
 
