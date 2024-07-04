@@ -88,21 +88,19 @@ public class DocumentController {
         return "redirect:/documentsLoading";
     }
 
-//    @PostMapping("/createDoc")
-//    public String createDoc(@ModelAttribute("doc") DocumentRequest request, Model model) {
-//        //Lấy người đăng nhập hiện tại (session ???) >> Get lại ng dùng trong CSDL
-//        User creator = userRepo.getTopByOrderByIdDesc(); //Giờ chưa có hệ thống đăng nhập nên tạm ntn
-//
-//        //Tạo tài liệu
-//        Document doc = documentService.createDocument(request, creator);
-//        if (doc == null) { //Nếu Tài liệu không trả về > báo lỗi > về trang tài liệu
-//            model.addAttribute("error", "Tạo tài liệu thất bại!");
-//            return "redirect:createDoc";
-//        } else {
-//            model.addAttribute("message", "Tạo tài liệu thành công!");
-//            return "redirect:reports"; //Trang xem tài liệu chi tiết?
-//        }
-//    }
+    @PostMapping("/createDocument")
+    public String createDocument(@RequestParam("title") String title,
+                                 @RequestParam("summary") String summary) {
+        try {
+            Document document = new Document(title, summary, null, null, null);
+            documentService.createDocument(document);
+            return "redirect:/";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/";
+        }
+    }
+
 
     @GetMapping("/{id}")
     public String details(@RequestParam("id") int id, Model model) {
@@ -150,5 +148,3 @@ public class DocumentController {
 
 
 }
-
-

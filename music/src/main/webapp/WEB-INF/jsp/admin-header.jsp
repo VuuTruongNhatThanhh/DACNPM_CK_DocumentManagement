@@ -232,13 +232,17 @@
                   <p> Quản lý tài liệu <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
+
+                <%-- Create Document--%>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../document-managent/create-document.html" class="nav-link">
+                    <a href="/createDocumentPage" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Tạo tài liệu</p>
                     </a>
                   </li>
+
+                  <%--Document List--%>
                   <li class="nav-item">
                     <a href="/documents" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>

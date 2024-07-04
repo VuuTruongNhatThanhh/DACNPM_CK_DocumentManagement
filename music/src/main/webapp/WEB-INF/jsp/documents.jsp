@@ -94,13 +94,13 @@
 
                                         </div>
                                         <%   }%>
-<%--                                        <div class="btn-group mr-2" role="group">--%>
-<%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 4) { %>--%>
-<%--                                            <button type="button" class="btn btn-warning" data-toggle="modal"--%>
-<%--                                                    data-target="#documentEditModal${document.id}">Phản hồi--%>
-<%--                                            </button>--%>
-<%--                                            <% } %>--%>
-<%--                                        </div>--%>
+                                        <%--                                        <div class="btn-group mr-2" role="group">--%>
+                                        <%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 4) { %>--%>
+                                        <%--                                            <button type="button" class="btn btn-warning" data-toggle="modal"--%>
+                                        <%--                                                    data-target="#documentEditModal${document.id}">Phản hồi--%>
+                                        <%--                                            </button>--%>
+                                        <%--                                            <% } %>--%>
+                                        <%--                                        </div>--%>
                                         <%if(role==1){%>
                                         <div class="btn-group mr-2" role="group">
                                             <% if (document.getStatus() == 3) { %>

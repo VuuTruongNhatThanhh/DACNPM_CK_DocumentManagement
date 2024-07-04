@@ -1,27 +1,17 @@
 package com.boot.music.controller;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.boot.music.entity.Document;
-import com.boot.music.entity.Version;
 import com.boot.music.entity.VersionDocument;
 import com.boot.music.repositories.DocumentRepo;
 import com.boot.music.repositories.VersionDocumentRepo;
 import com.boot.music.service.DocumentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 
 @Validated
 @Controller
@@ -73,12 +63,13 @@ private DocumentRepo documentRepo;
 
 		return model;
 		}
-	@GetMapping("/createDoc")
-	public ModelAndView createDoc(ModelAndView model , HttpSession session) {
-		model= new ModelAndView("create-document");
 
+	@GetMapping("/createDocumentPage")
+	public ModelAndView createDoc(ModelAndView model, HttpSession session) {
+		model = new ModelAndView("create-document");
 		return model;
-		}
+	}
+
 	@GetMapping("/report")
 	public ModelAndView report(ModelAndView model , HttpSession session) {
 		model= new ModelAndView("report");
@@ -125,4 +116,6 @@ private DocumentRepo documentRepo;
 			return "Đã xảy ra lỗi khi cập nhật tiêu đề và tóm tắt: " + e.getMessage();
 		}
 	}
-	}
+
+
+}
