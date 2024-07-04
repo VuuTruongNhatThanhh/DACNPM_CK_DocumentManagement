@@ -17,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -91,13 +93,20 @@ public class DocumentController {
     @PostMapping("/createDocument")
     public String createDocument(@RequestParam("title") String title,
                                  @RequestParam("summary") String summary) {
+
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.YEAR, 1);
+        Date endDate = calendar.getTime();
+
         try {
-            Document document = new Document(title, summary, null, null, null);
+            Document document = new Document(title, summary, currentDate, endDate, null);
             documentService.createDocument(document);
-            return "redirect:/";
+            return "redirect:/documents";
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/";
+            return "redirect:/documents";
         }
     }
 
