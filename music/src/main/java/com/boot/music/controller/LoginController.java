@@ -35,7 +35,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model,
-                        RedirectAttributes redirectAttributes) {
+                        RedirectAttributes redirectAttributes,  HttpSession session) {
         User user = userService.login(email, password);
         if (user == null) {
             redirectAttributes.addFlashAttribute("error", "Tài khoản hoặc mật khẩu không hợp lệ");
@@ -44,12 +44,14 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("error", "Tài khoản đã bị khóa");
             return "redirect:/login";
         } else {
+            session.setAttribute("userId", user.getId());
             // Đăng nhập thành công, thực hiện các thao tác mong muốn
             // Ví dụ: chuyển hướng đến trang chính của ứng dụng
             model.addAttribute("name", user.getName());
             model.addAttribute("role", user.getRole());
+            model.addAttribute("userId", user.getId());
 
-            return "redirect:/statistics";
+            return "redirect:/acc";
         }
 
     }

@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Tài liệu đang chờ</h1>
+                    <h1>Tài liệu của tôi</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -47,8 +47,9 @@
                             <tbody>
                             <% List<Document> documents = (List<Document>) request.getAttribute("documents");
                                 Map<Long, String> documentUserNames = (Map<Long, String>) request.getAttribute("documentUserNames");
+
                                 for (Document document : documents) { %>
-                            <%if(document.getStatus()!=3 && document.getStatus()!=2){%>
+                            <%if(document.getUser() == userId){%>
                             <tr>
                                 <td><%= document.getId() %>
                                 </td>
@@ -83,7 +84,7 @@
                                                 Xem
                                             </button>
                                         </div>
-                                        <%if(role==1){%>
+
                                         <div class="btn-group mr-2" role="group">
                                             <button type="button" class="btn btn-warning btn-edit" data-toggle="modal"
                                                     data-target="#documentEditModal" data-id="<%= document.getId() %>"
@@ -94,7 +95,7 @@
 
 
                                         </div>
-                                        <%   }%>
+
                                         <%--                                        <div class="btn-group mr-2" role="group">--%>
                                         <%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 4) { %>--%>
                                         <%--                                            <button type="button" class="btn btn-warning" data-toggle="modal"--%>
@@ -134,17 +135,17 @@
                                             <form id="approveForm${document.id}" action="/updateDocumentStatus" method="post" onsubmit="return confirm('Bạn có chắc chắn duyệt tài liệu này?');">
                                                 <input type="hidden" name="documentId" value="<%= document.getId() %>">
                                                 <input type="hidden" name="status" value="3">
-                                                <button style="background-color: green; border-color: green; color: white" type="submit" class="btn btn-primary">Duyệt</button>
+                                                <button type="submit" class="btn btn-primary">Duyệt</button>
                                             </form>
                                             <% } %>
 
                                         </div>
 
-<%--                                        <div class="btn-group" role="group">--%>
-<%--                                            <% if (document.getStatus() != 3 && document.getStatus() != 2) { %>--%>
-<%--                                            <button id="declineBtn${document.id}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#documentDeclineModal">Từ chối</button>--%>
-<%--                                            <% } %>--%>
-<%--                                        </div>--%>
+                                        <div class="btn-group" role="group">
+                                            <% if (document.getStatus() != 3 && document.getStatus() != 2) { %>
+                                            <button id="declineBtn${document.id}" type="button" class="btn btn-danger" data-toggle="modal" data-target="#documentDeclineModal">Từ chối</button>
+                                            <% } %>
+                                        </div>
                                         <%}%>
                                     </div>
 

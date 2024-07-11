@@ -56,8 +56,8 @@ public class User {
 	 * 1 user has many documents created by it mappedBy tells hibernate that search
 	 * for Doc bean in User
 	 */
-	@OneToMany(mappedBy = "user",cascade = CascadeType.MERGE)
-	private List<Document> documentList;
+//	@OneToMany(mappedBy = "user",cascade = CascadeType.MERGE)
+//	private List<Document> documentList;
 	//blank constructor is needed
 	public User() {}
 	public int getId() {
@@ -102,12 +102,12 @@ public class User {
 	public void setAccessLevel(int accessLevel) {
 		this.accessLevel = accessLevel;
 	}
-	public List<Document> getDocumentList() {
-		return documentList;
-	}
-	public void setDocumentList(List<Document> documentList) {
-		this.documentList = documentList;
-	}
+//	public List<Document> getDocumentList() {
+//		return documentList;
+//	}
+//	public void setDocumentList(List<Document> documentList) {
+//		this.documentList = documentList;
+//	}
 	public User(String name,  String email, String phone,
 				String password, int role, int accessLevel) {
 		super();
@@ -117,7 +117,7 @@ public class User {
 		this.password = password;
 		this.role = role;
 		this.accessLevel = accessLevel;
-		documentList=new ArrayList<Document>();
+//		documentList=new ArrayList<Document>();
 
 	}
 

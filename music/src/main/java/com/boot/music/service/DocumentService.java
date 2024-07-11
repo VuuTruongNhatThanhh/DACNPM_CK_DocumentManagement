@@ -19,6 +19,7 @@ public class DocumentService {
 
     @Autowired
     private DocumentRepo documentRepository;
+    @Autowired
     private UserRepo userRepo;
     public List<Document> getAllDocuments() {
         return documentRepository.findAll();
@@ -63,6 +64,12 @@ public class DocumentService {
 
         // Lưu tài liệu vào cơ sở dữ liệu và trả về tài liệu đã lưu
         return documentRepository.save(document);
+    }
+
+    public String getUserNameById(int userId) {
+        return userRepo.findById(userId)
+                .map(User::getName)
+                .orElse("Unknown User");
     }
     }
 

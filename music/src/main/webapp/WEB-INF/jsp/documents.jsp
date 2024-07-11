@@ -1,6 +1,7 @@
 <%@ page import="com.boot.music.entity.Document" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.boot.music.entity.VersionDocument" %>
+<%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -39,13 +40,14 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên tài liệu</th>
-
+                                <th>Người tạo</th>
                                 <th>Trạng Thái</th>
                                 <th>Tác vụ</th>
                             </tr>
                             </thead>
                             <tbody>
                             <% List<Document> documents = (List<Document>) request.getAttribute("documents");
+                                Map<Long, String> documentUserNames = (Map<Long, String>) request.getAttribute("documentUserNames");
                                 for (Document document : documents) { %>
                             <%if(document.getStatus()==3 || document.getStatus()==2){%>
                             <tr>
@@ -53,7 +55,7 @@
                                 </td>
                                 <td><%= document.getTitle() %>
                                 </td>
-
+                                <td><%= documentUserNames.get(document.getId()) %></td>
                                 <td><%
                                     String status = "";
                                     switch (document.getStatus()) {

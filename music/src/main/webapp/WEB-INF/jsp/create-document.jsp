@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Document</title>
+    <title>Tạo tài liệu</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -16,14 +16,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Document</h1>
+                    <h1>Tạo tài liệu</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
                             <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">Create Document</li>
+                        <li class="breadcrumb-item active">Tạo tài liệu</li>
                     </ol>
                 </div>
             </div>
@@ -35,35 +35,35 @@
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Văn bản</h3>
+<%--                        <h3 class="card-title">Văn bản</h3>--%>
                     </div>
                     <div class="card-body">
                         <div class="container">
                             <form id="document-form">
-                                <div class="document-filter">
-                                    <label for="document-type">Document Type:</label>
-                                    <select id="document-type" name="document-type" class="form-control">
-                                        <option value="all">All</option>
-                                        <option value="pdf">PDF</option>
-                                        <option value="doc">DOC</option>
-                                        <option value="txt">TXT</option>
-                                    </select>
-                                </div>
-                                <div class="government-filter">
-                                    <label for="government">Government:</label>
-                                    <select id="government" name="government" class="form-control">
-                                        <option value="all">All</option>
-                                        <option value="local">Local</option>
-                                        <option value="state">State</option>
-                                        <option value="federal">Federal</option>
-                                    </select>
-                                </div>
+<%--                                <div class="document-filter">--%>
+<%--                                    <label for="document-type">Loại tài liệu:</label>--%>
+<%--                                    <select id="document-type" name="document-type" class="form-control">--%>
+<%--                                        <option value="all">All</option>--%>
+<%--                                        <option value="pdf">PDF</option>--%>
+<%--                                        <option value="doc">DOC</option>--%>
+<%--                                        <option value="txt">TXT</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                                <div class="government-filter">--%>
+<%--                                    <label for="government">Chính phủ:</label>--%>
+<%--                                    <select id="government" name="government" class="form-control">--%>
+<%--                                        <option value="all">All</option>--%>
+<%--                                        <option value="local">Local</option>--%>
+<%--                                        <option value="state">State</option>--%>
+<%--                                        <option value="federal">Federal</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
                                 <div class="form-group">
-                                    <label for="title">Title:</label>
+                                    <label for="title">Tiêu đề:</label>
                                     <input type="text" id="title" name="title" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="summary">Summary:</label>
+                                    <label for="summary">Nội dung:</label>
                                     <textarea id="summary" name="summary" class="form-control" rows="4" required></textarea>
                                 </div>
                                 <div class="form-group btn-group">
@@ -74,7 +74,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card-footer">Hướng dẫn sử dụng</div>
+<%--                    <div class="card-footer">Hướng dẫn sử dụng</div>--%>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
                     $('#document-form')[0].reset(); // Xóa nội dung form sau khi gửi thành công
 
                     // Chuyển hướng sang trang /documents
-                    window.location.href = '/documents';
+                    window.location.href = '/mydocuments';
                 },
                 error: function(xhr, status, error) {
                     console.error('Lỗi:', error);

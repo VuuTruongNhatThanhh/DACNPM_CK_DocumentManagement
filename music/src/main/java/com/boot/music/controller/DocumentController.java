@@ -9,6 +9,7 @@ import com.boot.music.repositories.VersionDocumentRepo;
 import com.boot.music.repositories.VersionRepo;
 import com.boot.music.request.DocumentRequest;
 import com.boot.music.service.DocumentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +18,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class DocumentController {
@@ -35,15 +34,41 @@ public class DocumentController {
     @GetMapping("/documents")
     public String getAllDocuments(Model model) {
         List<Document> documents = documentService.getAllDocuments();
+        Map<Long, String> documentUserNames = new HashMap<>();
+        for (Document document : documents) {
+            String userName = documentService.getUserNameById(document.getUser());
+            documentUserNames.put(document.getId(), userName);
+        }
         model.addAttribute("documents", documents);
+        model.addAttribute("documentUserNames", documentUserNames);
         return "documents";
     }
 
     @GetMapping("/documentsLoading")
     public String getAllDocumentsLoading(Model model) {
         List<Document> documents = documentService.getAllDocuments();
+
+        Map<Long, String> documentUserNames = new HashMap<>();
+        for (Document document : documents) {
+            String userName = documentService.getUserNameById(document.getUser());
+            documentUserNames.put(document.getId(), userName);
+        }
         model.addAttribute("documents", documents);
+        model.addAttribute("documentUserNames", documentUserNames);
         return "documentsLoading";
+    }
+    @GetMapping("/mydocuments")
+    public String getAllMyDocuments(Model model) {
+        List<Document> documents = documentService.getAllDocuments();
+
+        Map<Long, String> documentUserNames = new HashMap<>();
+        for (Document document : documents) {
+            String userName = documentService.getUserNameById(document.getUser());
+            documentUserNames.put(document.getId(), userName);
+        }
+        model.addAttribute("documents", documents);
+        model.addAttribute("documentUserNames", documentUserNames);
+        return "mydocuments";
     }
 
     @GetMapping("/homeDocument")
@@ -92,7 +117,7 @@ public class DocumentController {
 
     @PostMapping("/createDocument")
     public String createDocument(@RequestParam("title") String title,
-                                 @RequestParam("summary") String summary) {
+                                 @RequestParam("summary") String summary, HttpSession session) {
 
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -101,12 +126,13 @@ public class DocumentController {
         Date endDate = calendar.getTime();
 
         try {
-            Document document = new Document(title, summary, currentDate, endDate, null);
+            int userId = (Integer) session.getAttribute("userId");
+            Document document = new Document(title, summary, currentDate, endDate, userId);
             documentService.createDocument(document);
-            return "redirect:/documents";
+            return "redirect:/mydocuments";
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/documents";
+            return "redirect:/mydocuments";
         }
     }
 

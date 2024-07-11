@@ -155,7 +155,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="../../index3.html" class="brand-link">
+        <a href="/homeDocument" class="brand-link">
           <img src="../img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">ChinhPhu.vn</span>
         </a>
@@ -169,6 +169,7 @@
             <div class="info">
               <% String name = (String) session.getAttribute("name");
                 Integer role = (Integer) session.getAttribute("role");
+                Integer userId = (Integer) session.getAttribute("userId");
                 String roleName = "";
                 if (role != null) {
                   switch (role) {
@@ -250,47 +251,53 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/documentsLoading" class="nav-link">
+                    <a href="/documentsLoading" class="nav-link <% if(role != 1) out.println("d-none"); %>">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Tài liệu đang chờ</p>
                     </a>
                   </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p> Report Management <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../report-managent/reports.html" class="nav-link">
+                    <a href="/mydocuments" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Danh sách Report</p>
+                      <p>Tài liệu của tôi</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p> Statistics Management <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="../statistics-managent/statistics.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Danh sách Statistics</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+<%--              <li class="nav-item">--%>
+<%--                <a href="#" class="nav-link">--%>
+<%--                  <i class="nav-icon fas fa-tachometer-alt"></i>--%>
+<%--                  <p> Report Management <i class="right fas fa-angle-left"></i>--%>
+<%--                  </p>--%>
+<%--                </a>--%>
+<%--                <ul class="nav nav-treeview">--%>
+<%--                  <li class="nav-item">--%>
+<%--                    <a href="../report-managent/reports.html" class="nav-link">--%>
+<%--                      <i class="far fa-circle nav-icon"></i>--%>
+<%--                      <p>Danh sách Report</p>--%>
+<%--                    </a>--%>
+<%--                  </li>--%>
+<%--                </ul>--%>
+<%--              </li>--%>
+<%--              <li class="nav-item">--%>
+<%--                <a href="#" class="nav-link">--%>
+<%--                  <i class="nav-icon fas fa-tachometer-alt"></i>--%>
+<%--                  <p> Statistics Management <i class="right fas fa-angle-left"></i>--%>
+<%--                  </p>--%>
+<%--                </a>--%>
+<%--                <ul class="nav nav-treeview">--%>
+<%--                  <li class="nav-item">--%>
+<%--                    <a href="../statistics-managent/statistics.html" class="nav-link">--%>
+<%--                      <i class="far fa-circle nav-icon"></i>--%>
+<%--                      <p>Danh sách Statistics</p>--%>
+<%--                    </a>--%>
+<%--                  </li>--%>
+<%--                </ul>--%>
+<%--              </li>--%>
               <li class="nav-item">
                 <a href="/logout" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p> SignOut
+                  <p> Đăng xuất
                   </p>
                 </a>
 

@@ -20,22 +20,21 @@ public class Document implements Serializable{
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name = "Date_End")
 	private Date dateEnd;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "UserID")
-	public User user;
+
+	public int userId;
 	@Column(name = "statusid")
 	private int statusID;
 	@OneToMany(mappedBy = "document"
 			, cascade = CascadeType.ALL)
 	private List<Version> versionList;
 	private String sumary;
-	public Document(String title,String sumary, Date dateStart, Date dateEnd, User user) {
+	public Document(String title,String sumary, Date dateStart, Date dateEnd, int userId) {
 		super();
 		this.title = title;
 		this.sumary=sumary;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
-		this.user = user;
+		this.userId = userId;
 		this.statusID=1;
 		versionList= new ArrayList<Version>();
 	}
@@ -66,11 +65,11 @@ public class Document implements Serializable{
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
-	public User getUser() {
-		return user;
+	public int getUser() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(int userId) {
+		this.userId = userId;
 	}
 	public int getStatus() {
 		return statusID;
